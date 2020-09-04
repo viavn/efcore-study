@@ -362,7 +362,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Ignore db.env changes
-env/db.env
+# env/db.env
 
 # Ignore docker volume
-dbdata/
+# dbdata/
