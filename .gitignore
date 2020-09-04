@@ -363,3 +363,6 @@ FodyWeavers.xsd
 
 # Ignore db.env changes
 env/db.env
+
+# Ignore docker volume
+dbdata/
