@@ -1,13 +1,10 @@
-version: "3"
+version: '3'
 services:
   db:
-    image: "mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04"
+    image: 'mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04'
     env_file:
       - ./env/db.env
     ports:
-      - "1433:1433"
+      - '1433:1433'
     volumes:
-      - dbdata:/var/opt/mssql
-
-volumes:
-  dbdata:
+      - ./dbdata:/var/opt/mssql
