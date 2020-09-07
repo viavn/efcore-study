@@ -15,6 +15,7 @@ namespace CursoEFCore.Data.Configuration
             builder.Property(p => p.CEP).HasColumnType("CHAR(8)").IsRequired();
             builder.Property(p => p.Estado).HasColumnType("CHAR(2)").IsRequired();
             builder.Property(p => p.Cidade).HasMaxLength(60).IsRequired();
+            builder.Property(p => p.Email).HasColumnType("VARCHAR(255)").IsRequired();
 
             builder.HasIndex(i => i.Telefone).HasName("idx_cliente_telefone");
         }
