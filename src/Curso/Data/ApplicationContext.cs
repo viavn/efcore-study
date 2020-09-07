@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using CursoEFCore.Domain;
 using CursoEFCore.Util;
@@ -18,7 +19,11 @@ namespace CursoEFCore.Data
             optionsBuilder
                 .UseLoggerFactory(_logger)
                 .EnableSensitiveDataLogging()
-                .UseSqlServer(Configurations.ConnectionString);
+                .UseSqlServer(Configurations.ConnectionString,
+                    options => options.EnableRetryOnFailure(
+                            maxRetryCount: 2,
+                            maxRetryDelay: TimeSpan.FromSeconds(5),
+                            errorNumbersToAdd: null));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
