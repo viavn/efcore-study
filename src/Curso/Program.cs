@@ -28,7 +28,8 @@ namespace CursoEFCore
             // InsertPedido();
             // GetPedidoEagerLoading();
             // UpdateClient();
-            DeleteClient();
+            // DeleteClient();
+            // InsertClients();
         }
 
         private static void DeleteClient()
@@ -152,7 +153,8 @@ namespace CursoEFCore
                 CEP = "99999999",
                 Cidade = "Americana",
                 Estado = "SP",
-                Telefone = "19999999999"
+                Telefone = "19999999999",
+                // Email = "vi@email.com.br"
             };
 
             using var db = new Data.ApplicationContext();
@@ -181,6 +183,28 @@ namespace CursoEFCore
 
             var registers = db.SaveChanges();
             Console.WriteLine($"Registros alterados: {registers}");
+        }
+
+        private static void InsertClients()
+        {
+            using var db = new Data.ApplicationContext();
+            var clients = new List<Cliente>();
+
+            for (int i = 1; i <= 10; i++)
+            {
+                clients.Add(new Cliente
+                {
+                    Nome = $"Teste {i}",
+                    CEP = "99999999",
+                    Cidade = "Americana",
+                    Estado = "SP",
+                    Telefone = "19999999999",
+                    // Email = $"vi_{i}@email.com.br"
+                });
+            }
+
+            db.Clientes.AddRange(clients);
+            db.SaveChanges();
         }
     }
 }
